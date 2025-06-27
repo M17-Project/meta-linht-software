@@ -1,4 +1,18 @@
-require recipes-core/images/core-image-base.bb
+DESCRIPTION = "This is the custom LinHT image"
+
+inherit core-image
+
+IMAGE_FEATURES += " \
+    debug-tweaks \
+    tools-profile \
+    tools-sdk \
+    package-management \
+    splash \
+    nfs-client \
+    tools-debug \
+    ssh-server-openssh \
+    hwcodecs \
+"
 
 IMAGE_INSTALL += "\
     gnuradio \
@@ -16,4 +30,3 @@ IMAGE_INSTALL += "\
     perf \
     zeromq-dev \
 "
-
