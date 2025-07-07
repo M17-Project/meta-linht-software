@@ -29,4 +29,16 @@ IMAGE_INSTALL += "\
     htop \
     perf \
     zeromq-dev \
+    gr-adsb \
+    gr-air-modes \
+    gr-ais \
+    gr-foo \
+    gr-m17 \
+    gr-ieee80211 \
+    gr-lora-sdr \
+    gr-osmosdr \
+    gr-pager \
+    gr-satellites \
+    rtl433 \
 "
+
