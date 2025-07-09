@@ -40,5 +40,9 @@ IMAGE_INSTALL += "\
     gr-pager \
     gr-satellites \
     rtl433 \
+    codec2 \
+    libm17 \
+    libtalloc \
+    libosmocore \
 "
 
