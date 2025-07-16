@@ -23,11 +23,3 @@ do_configure:prepend() {
 
     install -m 0644 ${CODEBOOK_SRC}/codebook*.c ${CODEBOOK_DST}/
 }
-
-do_install:append() {
-    # Ensure the target include directory exists
-    install -d ${D}${includedir}/codec2
-
-    # Install all header files from the source directory
-    install -m 0644 ${S}/src/*.h ${D}${includedir}/codec2/
-}

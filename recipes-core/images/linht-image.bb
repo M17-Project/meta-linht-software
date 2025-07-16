@@ -7,15 +7,14 @@ IMAGE_FEATURES += " \
     tools-profile \
     tools-sdk \
     package-management \
-    splash \
     nfs-client \
     tools-debug \
     ssh-server-openssh \
     hwcodecs \
 "
 
+# Tools
 IMAGE_INSTALL += "\
-    gnuradio \
     nano \
     cmake \
     alsa-tools \
@@ -28,6 +27,12 @@ IMAGE_INSTALL += "\
     git \
     htop \
     perf \
+    dtc \
+"
+
+# Gnuradio stuff
+IMAGE_INSTALL += "\
+    gnuradio \
     zeromq-dev \
     gr-adsb \
     gr-air-modes \
@@ -40,9 +45,15 @@ IMAGE_INSTALL += "\
     gr-pager \
     gr-satellites \
     rtl433 \
-    codec2 \
-    libm17 \
-    libtalloc \
-    libosmocore \
 "
 
+# Libs
+IMAGE_INSTALL += "\
+    codec2 \
+    codec2-dev \
+    libm17 \
+    libm17-dev \
+    libtalloc \
+    libosmocore \
+    libosmocore-dev \
+"
