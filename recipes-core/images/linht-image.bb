@@ -28,6 +28,8 @@ IMAGE_INSTALL += "\
     htop \
     perf \
     dtc \
+    thrift \
+    kmscube \
 "
 
 # Gnuradio stuff
@@ -43,7 +45,6 @@ IMAGE_INSTALL += "\
     gr-lora-sdr \
     gr-osmosdr \
     gr-pager \
-    gr-satellites \
     rtl433 \
 "
 
@@ -56,4 +57,15 @@ IMAGE_INSTALL += "\
     libtalloc \
     libosmocore \
     libosmocore-dev \
+    libthrift \
+    freetype \
+    freetype-dev \
+"
+
+# Python Packages
+IMAGE_INSTALL += "\
+    python3-thrift \
+    python3-encodec \
+    python3-vocos \
+    python3-numpy \
 "
