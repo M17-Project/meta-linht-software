@@ -36,16 +36,8 @@ IMAGE_INSTALL += "\
 IMAGE_INSTALL += "\
     gnuradio \
     zeromq-dev \
-    gr-adsb \
-    gr-air-modes \
-    gr-ais \
     gr-foo \
     gr-m17 \
-    gr-ieee80211 \
-    gr-lora-sdr \
-    gr-osmosdr \
-    gr-pager \
-    rtl433 \
 "
 
 # Libs
