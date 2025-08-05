@@ -30,15 +30,9 @@ This layer provides software components and applications for the LinHT project a
 
 ### GNU Radio ecosystem
 - **GNU Radio**: Software radio framework
-- **gr-adsb**: ADS-B decoder blocks
-- **gr-air-modes**: Aircraft mode decoder
-- **gr-ais**: AIS (Automatic Identification System) decoder
+- **gr-m17**: GNU Radio M17 blocks
 - **gr-foo**: General purpose GNU Radio blocks
-- **gr-ieee80211**: 802.11 WiFi blocks
-- **gr-lora-sdr**: LoRa modulation/demodulation
-- **gr-osmosdr**: Hardware abstraction layer
-- **gr-pager**: Pager signal decoder
-
+ 
 ### Python packages
 - **python3-encodec**: Neural audio codec
 - **python3-vocos**: Voice conversion system
@@ -152,27 +146,6 @@ BBLAYERS += "/path/to/meta-linht-software"
 ```bash
 bitbake linht-image
 ```
-
-## Technical notes
-
-### M17 protocol integration
-- **libm17**: Provides core M17 protocol functions
-- **gr-m17**: GNU Radio blocks for M17 signal processing
-- **Integration**: Seamless M17 protocol support in GNU Radio flowgraphs
-
-### Audio processing pipeline
-- **Codec2**: Low-bitrate speech encoding for radio transmission
-- **ALSA integration**: Complete audio subsystem configuration
-
-### GNU Radio ecosystem
-- **Modular design**: Out-of-tree modules for specific protocols
-- **Hardware abstraction**: gr-osmosdr for SDR hardware support
-- **Protocol support**: Multiple radio protocols (ADS-B, AIS, LoRa, etc.)
-
-### Python integration
-- **AI/ML support**: Neural audio codecs (EnCodec, Vocos)
-- **Signal processing**: SciPy and NumPy for advanced algorithms
-- **Communication**: Thrift RPC for inter-process communication
 
 ## License
 
