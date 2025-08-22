@@ -3,11 +3,14 @@ Name=usb0
 
 [Network]
 Address=10.17.17.17/24
+Gateway=10.17.17.1
 DHCPServer=on
+RequiredForOnline=yes
+DNS=9.9.9.9 149.112.112.112
 
 [DHCPServer]
 EmitDNS=no
 EmitRouter=no
 EmitTimezone=no
 MaxLeaseTimeSec=20min
-PoolSize=10
+PoolSize=1

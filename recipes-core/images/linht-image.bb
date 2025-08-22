@@ -11,6 +11,7 @@ IMAGE_FEATURES += " \
     tools-debug \
     ssh-server-openssh \
     hwcodecs \
+    splash \
 "
 
 # Tools
@@ -30,6 +31,7 @@ IMAGE_INSTALL += "\
     dtc \
     thrift \
     kmscube \
+    psplash \
 "
 
 # Gnuradio stuff
@@ -52,6 +54,8 @@ IMAGE_INSTALL += "\
     libthrift \
     freetype \
     freetype-dev \
+    libsdl2 \
+    libsdl2-dev \
 "
 
 # Python Packages
