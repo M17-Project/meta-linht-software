@@ -1,0 +1,10 @@
+[Unit]
+Description=LinHT GUI
+
+[Service]
+ExecStart=/opt/linht-gui/linht-gui
+WorkingDirectory=/opt/linht-gui
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

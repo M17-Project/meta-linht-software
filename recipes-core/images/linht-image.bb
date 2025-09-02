@@ -32,14 +32,24 @@ IMAGE_INSTALL += "\
     thrift \
     kmscube \
     psplash \
+    linht-gui \
+    linht-utils \
+    evtest \
+    nodejs \
+    ffmpeg \
+    ffmpeg-dev \
+    flac \
+    flac-dev \
 "
 
 # Gnuradio stuff
 IMAGE_INSTALL += "\
     gnuradio \
+    gnuradio-gr-utils \
     zeromq-dev \
     gr-foo \
     gr-m17 \
+    gr-bokehgui \
 "
 
 # Libs
@@ -56,6 +66,8 @@ IMAGE_INSTALL += "\
     freetype-dev \
     libsdl2 \
     libsdl2-dev \
+    libgpiod \
+    libgpiod-dev \
 "
 
 # Python Packages
@@ -64,4 +76,8 @@ IMAGE_INSTALL += "\
     python3-encodec \
     python3-vocos \
     python3-numpy \
+    python3-pip \
+    python3-mako \
+    python3-pyyaml \
+    python3-bokeh \
 "

@@ -1,0 +1,33 @@
+From c20ba6d06145ba935b486a0284893507cefd475b Mon Sep 17 00:00:00 2001
+From: OE3ANC <dev@oe3anc.at>
+Date: Sun, 24 Aug 2025 06:36:55 +0200
+Subject: [PATCH] remove check for bokeh
+
+---
+ CMakeLists.txt | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3736a7b..0ec328d 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -127,14 +127,9 @@ endif(APPLE)
+ ########################################################################
+ find_package(Doxygen)
+ 
+-########################################################################
+-# Check if boheh module exists
+-########################################################################
++
+ include(GrPython)
+-GR_PYTHON_CHECK_MODULE("bokeh" bokeh True BOKEH_FOUND)
+-if(NOT BOKEH_FOUND)
+-    message(FATAL_ERROR "Bokeh library required to compile gr-bokehgui")
+-endif()
++
+ 
+ ########################################################################
+ # PyBind11 Related
+-- 
+2.50.1
+
