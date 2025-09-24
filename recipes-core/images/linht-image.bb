@@ -1,6 +1,11 @@
 DESCRIPTION = "This is the custom LinHT image"
 
 inherit core-image
+inherit extrausers
+
+# Add user linht with the password linht
+EXTRA_USERS_PARAMS = "useradd -u 1200 -d /home/linht -s /bin/sh -p '\$6\$oe3ancwashere\$6./TTGz3AxcuInBHXiDZFdeaRkG.5WjEQfd4lGWNSylIRLLjshUbLeSdBfyLTJ0rh88WW/vc1SJyNjE.aabDO1' linht; \
+                      usermod -a -G sudo,audio,dialout,plugdev,shutdown,docker linht;"
 
 IMAGE_FEATURES += " \
     debug-tweaks \
@@ -16,6 +21,8 @@ IMAGE_FEATURES += " \
 
 # Tools
 IMAGE_INSTALL += "\
+    sudo \
+    zsh \
     nano \
     cmake \
     alsa-tools \
@@ -34,12 +41,21 @@ IMAGE_INSTALL += "\
     psplash \
     linht-gui \
     linht-utils \
+    linht-environment \
     evtest \
     nodejs \
     ffmpeg \
     ffmpeg-dev \
     flac \
     flac-dev \
+    sox \
+    packagegroup-container \
+"
+
+IMAGE_INSTALL:append = " \
+    e2fsprogs-resize2fs \
+    parted \
+    util-linux \
 "
 
 # Gnuradio stuff
@@ -66,8 +82,16 @@ IMAGE_INSTALL += "\
     freetype-dev \
     libsdl2 \
     libsdl2-dev \
+    raylib \
+    raylib-dev \
     libgpiod \
     libgpiod-dev \
+    libpredict \
+    libpredict-dev \
+    cyaml \
+    cyaml-dev \
+    lvgl \
+    lvgl-dev \
 "
 
 # Python Packages
@@ -80,4 +104,5 @@ IMAGE_INSTALL += "\
     python3-mako \
     python3-pyyaml \
     python3-bokeh \
+    python3-scipy \
 "
