@@ -8,8 +8,8 @@ S = "${WORKDIR}/git"
 
 inherit systemd
 
-DEPENDS = "libgpiod libpredict"
-RDEPENDS:${PN} = "libgpiod libpredict bash"
+DEPENDS = "libgpiod libpredict libsx1255"
+RDEPENDS:${PN} = "libgpiod libpredict bash libsx1255"
 
 SYSTEMD_SERVICE:${PN} = "sx1255-spi.service volume-ctrl.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
@@ -20,7 +20,7 @@ do_compile() {
     ${CC} ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} \
         -Wall -Wextra -O2 \
         sx1255-spi.c -o sx1255-spi \
-        -lgpiod -lm
+        -lgpiod -lsx1255 -lm
 
     # Compile fb_test
     cd ${S}/tests/fb_test
@@ -77,14 +77,14 @@ User=root
 WantedBy=multi-user.target
 EOF
 
-    # Copy grc directory to /root/grc
-    install -d ${D}/root/grc
+    # Copy grc directory to /usr/share/linht/grc
+    install -d ${D}/usr/share/linht/grc
     if [ -d ${S}/grc ]; then
-        cp -r ${S}/grc/* ${D}/root/grc/
-        find ${D}/root/grc -type f -exec chmod 644 {} \;
-        find ${D}/root/grc -type d -exec chmod 755 {} \;
+        cp -r ${S}/grc/* ${D}/usr/share/linht/grc
+        find ${D}/usr/share/linht/grc -type f -exec chmod 644 {} \;
+        find ${D}/usr/share/linht/grc -type d -exec chmod 755 {} \;
     fi
 }
 
-FILES:${PN} += "/root/grc ${systemd_unitdir}/system/sx1255-spi.service ${systemd_unitdir}/system/volume-ctrl.service"
+FILES:${PN} += "/usr/share/linht/grc ${systemd_unitdir}/system/sx1255-spi.service ${systemd_unitdir}/system/volume-ctrl.service"
 INSANE_SKIP:${PN} = "dev-so already-stripped ldflags"
