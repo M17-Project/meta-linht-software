@@ -76,15 +76,7 @@ User=root
 [Install]
 WantedBy=multi-user.target
 EOF
-
-    # Copy grc directory to /usr/share/linht/grc
-    install -d ${D}/usr/share/linht/grc
-    if [ -d ${S}/grc ]; then
-        cp -r ${S}/grc/* ${D}/usr/share/linht/grc
-        find ${D}/usr/share/linht/grc -type f -exec chmod 644 {} \;
-        find ${D}/usr/share/linht/grc -type d -exec chmod 755 {} \;
-    fi
 }
 
-FILES:${PN} += "/usr/share/linht/grc ${systemd_unitdir}/system/sx1255-spi.service ${systemd_unitdir}/system/volume-ctrl.service"
+FILES:${PN} += "${systemd_unitdir}/system/sx1255-spi.service ${systemd_unitdir}/system/volume-ctrl.service"
 INSANE_SKIP:${PN} = "dev-so already-stripped ldflags"
