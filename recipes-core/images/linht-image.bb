@@ -49,6 +49,7 @@ IMAGE_INSTALL += "\
     thrift \
     kmscube \
     psplash \
+    linht-web \
     linht-utils \
     linht-share \
     linht-environment \
@@ -60,6 +61,7 @@ IMAGE_INSTALL += "\
     flac-dev \
     sox \
     packagegroup-container \
+    m17-packet \
 "
 
 IMAGE_INSTALL:append = " \
@@ -104,6 +106,10 @@ IMAGE_INSTALL += "\
     lvgl-dev \
     libsx1255 \
     libsx1255-dev \
+    libm17-t9 \
+    libm17-t9-dev \
+    libsndfile1 \
+    libsndfile1-dev \
 "
 
 # Python Packages

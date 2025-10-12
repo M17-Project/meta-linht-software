@@ -1,0 +1,29 @@
+# Linht Web Manager Configuration
+
+server:
+  port: "7373"
+  host: "0.0.0.0"
+
+# Authentication
+# Generate new hash: htpasswd -bnBC 10 "" YOUR_PASSWORD | tr -d ':\n'
+auth:
+  password_hash: "$2y$10$Nm2D3cWpbP7aQBEySoFW/uHKP6.efKJAPJYvpKXv9zkzBK2T3a5Qm" # default password: linht
+
+# Docker daemon socket
+docker:
+  socket: "unix:///var/run/docker.sock" # Docker
+  #socket: "unix:///run/user/1000/podman/podman.sock" # Podman Service
+
+# Enabled plugins (Does not change the UI - TODO!)
+plugins:
+  - docker
+  - webshell
+  - filemanager
+
+# Webshell plugin settings
+webshell:
+  shell: "/bin/bash"  # Default shell command
+
+# File manager plugin settings
+filemanager:
+  max_upload_size: 1073741824  # 1GB in bytes

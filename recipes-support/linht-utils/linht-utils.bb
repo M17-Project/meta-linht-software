@@ -11,7 +11,7 @@ inherit systemd
 DEPENDS = "libgpiod libpredict libsx1255"
 RDEPENDS:${PN} = "libgpiod libpredict bash libsx1255"
 
-SYSTEMD_SERVICE:${PN} = "sx1255-spi.service volume-ctrl.service"
+SYSTEMD_SERVICE:${PN} = "volume-ctrl.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 do_compile() {
@@ -45,19 +45,6 @@ do_install() {
 
     # Install systemd service files
     install -d ${D}${systemd_unitdir}/system
-    # sx1255-spi oneshot service with parameters
-    cat > ${D}${systemd_unitdir}/system/sx1255-spi.service << EOF
-[Unit]
-Description=Run sx1255-spi once after boot
-After=multi-user.target
-
-[Service]
-Type=oneshot
-ExecStart=${bindir}/sx1255-spi -s 500 -r 438300000 -t 430700000
-
-[Install]
-WantedBy=multi-user.target
-EOF
 
     # volume-ctrl service
     cat > ${D}${systemd_unitdir}/system/volume-ctrl.service << EOF

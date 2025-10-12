@@ -1,0 +1,20 @@
+[Unit]
+Description=LinHT Web Manager
+Documentation=https://github.com/OE3ANC/linht-web
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/linht-web
+ExecStart=/opt/linht-web/linht-web
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=linht-web
+
+[Install]
+WantedBy=multi-user.target

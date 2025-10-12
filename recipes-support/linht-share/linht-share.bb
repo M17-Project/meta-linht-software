@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
 
 # Use git fetcher to clone the repository
-SRC_URI = "git://github.com/OE3ANC/LinHT-share.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/M17-Project/LinHT-share.git;protocol=https;branch=main"
 SRCREV = "${AUTOREV}"
 
 # Set version based on git revision
