@@ -54,7 +54,6 @@ IMAGE_INSTALL += "\
     linht-share \
     linht-environment \
     evtest \
-    nodejs \
     ffmpeg \
     ffmpeg-dev \
     flac \
@@ -73,6 +72,7 @@ IMAGE_INSTALL:append = " \
 # Gnuradio stuff
 IMAGE_INSTALL += "\
     gnuradio \
+    gnuradio-dev \
     gnuradio-gr-utils \
     zeromq-dev \
     gr-foo \
@@ -121,6 +121,7 @@ IMAGE_INSTALL += "\
     python3-pip \
     python3-mako \
     python3-pyyaml \
-    python3-bokeh \
     python3-scipy \
+    python3-pybind11 \
+    python3-pybind11-dev \
 "

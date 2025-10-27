@@ -13,21 +13,13 @@ SRC_URI = "git://github.com/chirlu/sox.git;protocol=https;branch=master"
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
-inherit autotools pkgconfig
+inherit autotools-brokensep pkgconfig
 
 # Remove all PACKAGECONFIG until we verify what options are supported
 PACKAGECONFIG ??= ""
 
 # Start with minimal EXTRA_OECONF options
 EXTRA_OECONF = "--disable-openmp"
-
-# SoX uses some non-standard configure checks
-do_configure:prepend() {
-    # Generate configure script if it doesn't exist
-    if [ ! -f ${S}/configure ]; then
-        cd ${S} && autoreconf -fiv
-    fi
-}
 
 PACKAGES =+ "libsox libsox-dev"
 FILES:libsox = "${libdir}/libsox.so.*"

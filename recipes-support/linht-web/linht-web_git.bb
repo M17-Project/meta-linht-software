@@ -16,6 +16,9 @@ RDEPENDS:${PN} = "systemd docker"
 
 inherit systemd
 
+do_compile[network] = "1"
+
+
 SYSTEMD_SERVICE:${PN} = "linht-web.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
