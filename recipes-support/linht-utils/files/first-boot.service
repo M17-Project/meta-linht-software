@@ -1,0 +1,10 @@
+[Unit]  
+Description=First-boot setup  
+Before=multi-user.target  
+
+[Service]  
+Type=oneshot  
+RemainAfterExit=yes  
+ExecStart=/usr/bin/firstboot.sh  
+ExecStartPost=/bin/systemctl disable firstboot.service  
+StandardOutput=journal+console  

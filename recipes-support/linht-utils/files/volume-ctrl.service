@@ -1,0 +1,14 @@
+[Unit]
+Description=LinHT Volume Control Service
+After=multi-user.target
+Wants=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/volume_ctrl.sh
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target

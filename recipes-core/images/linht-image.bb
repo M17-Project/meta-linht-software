@@ -110,6 +110,10 @@ IMAGE_INSTALL += "\
     libm17-t9-dev \
     libsndfile1 \
     libsndfile1-dev \
+    liblinht-ctrl \
+    liblinht-ctrl-dev \
+    zeromq \
+    zeromq-dev \
 "
 
 # Python Packages

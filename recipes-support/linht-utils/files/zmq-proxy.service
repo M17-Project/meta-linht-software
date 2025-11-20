@@ -1,0 +1,13 @@
+[Unit]
+Description=LinHT ZMQ proxy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/zmq_proxy
+Restart=on-failure
+RestartSec=5s
+User=root
+
+[Install]
+WantedBy=multi-user.target

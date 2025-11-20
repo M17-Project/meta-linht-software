@@ -1,13 +1,8 @@
 # Linht Web Manager Configuration
 
 server:
-  port: "7373"
+  port: "80"
   host: "0.0.0.0"
-
-# Authentication
-# Generate new hash: htpasswd -bnBC 10 "" YOUR_PASSWORD | tr -d ':\n'
-auth:
-  password_hash: "$2y$10$Nm2D3cWpbP7aQBEySoFW/uHKP6.efKJAPJYvpKXv9zkzBK2T3a5Qm" # default password: linht
 
 # Docker daemon socket
 docker:
@@ -19,6 +14,7 @@ plugins:
   - docker
   - webshell
   - filemanager
+  - hardware
 
 # Webshell plugin settings
 webshell:
@@ -26,4 +22,14 @@ webshell:
 
 # File manager plugin settings
 filemanager:
-  max_upload_size: 1073741824  # 1GB in bytes
+  max_upload_size: 2147483648  # 2GB in bytes (increased for embedded device testing)
+
+# Hardware plugin settings
+hardware:
+  sx1255:
+    spi_device: "/dev/spidev0.0"
+    spi_speed: 500000  # 500 kHz
+    gpio_chip: "/dev/gpiochip0"
+    reset_pin: 22
+    tx_rx_pin: 13  # TX/RX switch control
+    clock_freq: 32000000  # 32 MHz crystal frequency

@@ -13,5 +13,4 @@ SRC_URI = "gitsm://github.com/M17-Project/gr-m17;branch=dev;protocol=https \
           "
 S = "${WORKDIR}/git"
 
-SRCREV = "bac42390ad9bf1ed58d72a7f4a1fe2bad27964aa"
-
+SRCREV = "${AUTOREV}"

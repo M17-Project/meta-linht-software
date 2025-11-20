@@ -18,10 +18,10 @@ RDEPENDS:${PN} = "libgpiod"
 inherit pkgconfig
 
 # Add include directory to CFLAGS and pass to make
-EXTRA_OEMAKE = "CC='${CC}' CFLAGS='${CFLAGS} -I${S}/include' LDFLAGS='${LDFLAGS}'"
+EXTRA_OEMAKE = "CC='${CC}' CFLAGS='${CFLAGS} -I${S}/include' LDFLAGS='${LDFLAGS} -lgpiod'"
 
 do_compile() {
-    oe_runmake all
+    oe_runmake
 }
 
 do_install() {
@@ -29,10 +29,10 @@ do_install() {
 }
 
 # Package the outputs properly
-PACKAGES = "${PN} ${PN}-dev ${PN}-staticdev"
+PACKAGES = "${PN} ${PN}-dev ${PN}-staticdev ${PN}-dbg"
 
-FILES:${PN} = "${libdir}/liblinht-ctrl.so.*"
-FILES:${PN}-dev = "${includedir}/liblinht-ctrl.h ${libdir}/liblinht-ctrl.so ${libdir}/pkgconfig/*"
+FILES:${PN} = "${libdir}/liblinht-ctrl.so*"
+FILES:${PN}-dev = "${includedir}/liblinht-ctrl.h ${libdir}/pkgconfig/*"
 FILES:${PN}-staticdev = "${libdir}/liblinht-ctrl.a"
 
 # Allow native and SDK builds

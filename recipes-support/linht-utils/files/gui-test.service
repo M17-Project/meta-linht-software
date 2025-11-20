@@ -1,0 +1,13 @@
+[Unit]
+Description=GUI Test
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/gui_test
+Restart=on-failure
+RestartSec=5s
+User=root
+
+[Install]
+WantedBy=multi-user.target
