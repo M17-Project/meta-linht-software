@@ -1,6 +1,7 @@
 [Unit]
 Description=GUI Test
-After=network.target
+After=multi-user.target
+Wants=multi-user.target
 
 [Service]
 Type=simple

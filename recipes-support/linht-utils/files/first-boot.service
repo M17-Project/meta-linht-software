@@ -2,12 +2,12 @@
 Description=First-boot setup  
 Before=multi-user.target  
 
-[Install]
-WantedBy=multi-user.target
-
 [Service]  
 Type=oneshot  
 RemainAfterExit=yes  
 ExecStart=/usr/bin/firstboot.sh  
 ExecStartPost=/bin/systemctl disable first-boot.service  
 StandardOutput=journal+console  
+
+[Install]
+WantedBy=multi-user.target
