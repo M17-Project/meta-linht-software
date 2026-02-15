@@ -43,6 +43,9 @@ do_compile() {
 }
 
 do_install() {
+     # Prepare directory needed by gui_test
+     install -d ${D}${localstatedir}/lib/linht
+
      # install script
      install -Dm 0755 ${WORKDIR}/linht-first-boot.sh ${D}${bindir}/linht-first-boot.sh
 
