@@ -10,8 +10,8 @@ S = "${WORKDIR}/git"
 
 inherit systemd
 
-DEPENDS = "libgpiod libpredict libsx1255 zeromq liblinht-ctrl alsa-lib libgpiod raylib cyaml"
-RDEPENDS:${PN} = "bash libgpiod libpredict libsx1255 zeromq liblinht-ctrl alsa-lib libgpiod raylib cyaml"
+DEPENDS = "libgpiod libpredict libsx1255 zeromq liblinht-ctrl alsa-lib libgpiod raylib cyaml libm17"
+RDEPENDS:${PN} = "bash libgpiod libpredict libsx1255 zeromq liblinht-ctrl alsa-lib libgpiod raylib cyaml libm17"
 
 SYSTEMD_SERVICE:${PN} = "linht-volume-ctrl.service linht-zmq-proxy.service linht-gui-test.service linht-first-boot.service"  
 SYSTEMD_AUTO_ENABLE = "enable"
@@ -39,7 +39,7 @@ do_compile() {
     # gui_test
     cd ${S}/tests/gui_test 
     ${CC} ${CFLAGS} ${LDFLAGS} -Wall -Wextra -O2 \
-         *.c -o gui_test -lraylib -lsx1255 -lzmq -llinht-ctrl -lcyaml                                           
+         *.c -o gui_test -lm17 -lraylib -lsx1255 -lzmq -llinht-ctrl -lcyaml -lsqlite3 -lm -lpthread -ldl -lrt
 }
 
 do_install() {
