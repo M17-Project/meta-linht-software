@@ -1,13 +1,13 @@
 SUMMARY = "Simple and easy-to-use library to enjoy videogames programming"
 HOMEPAGE = "https://www.raylib.com"
 LICENSE = "Zlib"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=12bd98761b1577144a8ce71fd2470fb7"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=e5c04526673eda16f837e05cb1177261"
 
 DEPENDS = "libdrm mesa linux-libc-headers"
 
 # Use git with AUTOREV to avoid checksum issues
-SRCREV_raylib = "${AUTOREV}"
-SRCREV_raygui = "${AUTOREV}"
+SRCREV_raylib = "5.5"
+SRCREV_raygui = "4.0"
 
 SRC_URI = "git://github.com/raysan5/raylib.git;protocol=https;branch=master;name=raylib;destsuffix=raylib \
            git://github.com/raysan5/raygui.git;protocol=https;branch=master;name=raygui;destsuffix=raygui"
