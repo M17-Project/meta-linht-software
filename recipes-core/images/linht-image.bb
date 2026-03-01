@@ -62,6 +62,7 @@ IMAGE_INSTALL += "\
     packagegroup-container \
     m17-packet \
     fbida \
+    sqlite3 \
 "
 
 IMAGE_INSTALL:append = " \
@@ -78,7 +79,6 @@ IMAGE_INSTALL += "\
     zeromq-dev \
     gr-foo \
     gr-m17 \
-    gr-bokehgui \
 "
 
 # Libs

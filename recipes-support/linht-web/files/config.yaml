@@ -8,6 +8,8 @@ server:
 docker:
   socket: "unix:///var/run/docker.sock" # Docker
   #socket: "unix:///run/user/1000/podman/podman.sock" # Podman Service
+  container_stop_timeout: 10  # seconds
+  default_log_lines: "100"    # default number of log lines to show
 
 # Enabled plugins (Does not change the UI - TODO!)
 plugins:
@@ -15,6 +17,12 @@ plugins:
   - webshell
   - filemanager
   - hardware
+  - cps
+  - services
+
+# CPS plugin settings
+cps:
+  settings_path: "/usr/share/linht/settings.yaml"
 
 # Webshell plugin settings
 webshell:
@@ -33,3 +41,8 @@ hardware:
     reset_pin: 22
     tx_rx_pin: 13  # TX/RX switch control
     clock_freq: 32000000  # 32 MHz crystal frequency
+
+# Services plugin settings
+services:
+  prefix: "linht-"            # Service name prefix filter
+  default_log_lines: "100"    # default number of log lines to show
