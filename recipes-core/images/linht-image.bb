@@ -63,6 +63,7 @@ IMAGE_INSTALL += "\
     m17-packet \
     fbida \
     sqlite3 \
+    gpsd \
 "
 
 IMAGE_INSTALL:append = " \

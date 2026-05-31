@@ -39,8 +39,14 @@ hardware:
     spi_speed: 500000  # 500 kHz
     gpio_chip: "/dev/gpiochip0"
     reset_pin: 22
-    tx_rx_pin: 13  # TX/RX switch control
+    tx_rx_pin: 15  # TX/RX switch control
     clock_freq: 32000000  # 32 MHz crystal frequency
+  attenuator:
+    data_pin: 6   # PE4312 DATA (shared)
+    clk_pin: 7    # PE4312 CLK (shared)
+    le1_pin: 12   # PE4312 LE1 (chip 1 latch)
+    le2_pin: 13   # PE4312 LE2 (chip 2 latch)
+
 
 # Services plugin settings
 services:
