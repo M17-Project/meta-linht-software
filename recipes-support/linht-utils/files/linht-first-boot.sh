@@ -12,17 +12,33 @@ echo "Building GRC files..."
 cd /usr/share/linht/grc
 grcc /usr/share/linht/grc/som_m17_ptt.grc
 
+# TODO -> Not nice, find a better way to do this
 echo "Setting up audio..."
-# TODO -> New codec
-#amixer -q -c wm8960audio sset 'Headphone' 127,127
-#amixer -q -c wm8960audio sset 'Speaker' 127,127
-#amixer -q -c wm8960audio sset 'Speaker AC' 5
-#amixer -q -c wm8960audio sset 'Speaker DC' 4
-
-#amixer -q -c wm8960audio sset 'Right Boost Mixer RINPUT1' on
-#amixer -q -c wm8960audio sset 'Right Input Boost Mixer RINPUT1' 0
-#amixer -q -c wm8960audio sset 'Right Input Mixer Boost' on
-#amixer -q -c wm8960audio sset 'ADC Data Output Select' 'Left Data = Right ADC; Right Data = Right ADC'
+amixer -q -c AUDIO sset 'Speaker'   Mono: Playback [on]
+amixer -q -c AUDIO sset 'Speaker Analog' 89
+amixer -q -c AUDIO sset 'Speaker Driver' 3
+amixer -q -c AUDIO sset 'Mic PGA'   Mono: Capture 99 [83%] [49.50dB]
+amixer -q -c AUDIO sset 'ADC'   Mono: Capture 49 [77%] [4.50dB] [on]
+amixer -q -c AUDIO sset 'ADC Fine'   Mono: Capture 3 [75%] [0.30dB]
+amixer -q -c AUDIO sset 'DAC' 133,133
+amixer -q -c AUDIO sset 'DAC Left Input' 'Left Data'
+amixer -q -c AUDIO sset 'DAC Right Input' 'Off'
+amixer -q -c AUDIO sset 'HP Analog' 0,0
+amixer -q -c AUDIO sset 'HP Driver' 0,0
+amixer -q -c AUDIO sset 'HP Left'   Mono: Playback [off]
+amixer -q -c AUDIO sset 'HP Output Driver Power-On time' '0us'
+amixer -q -c AUDIO sset 'HP Output Driver Ramp-up step' '0ms'
+amixer -q -c AUDIO sset 'HP Right'   Mono: Playback [off]
+amixer -q -c AUDIO sset 'MIC1LM M-Terminal' 'Off'
+amixer -q -c AUDIO sset 'MIC1LM P-Terminal' 'Off'
+amixer -q -c AUDIO sset 'MIC1LP P-Terminal' 'Off'
+amixer -q -c AUDIO sset 'MIC1RP P-Terminal' 'FFR 10 Ohm'
+amixer -q -c AUDIO sset 'Output Left From Left DAC'   Mono: Playback [on]
+amixer -q -c AUDIO sset 'Output Left From MIC1LP'   Mono: Playback [off]
+amixer -q -c AUDIO sset 'Output Left From MIC1RP'   Mono: Playback [off]
+amixer -q -c AUDIO sset 'Output Right From MIC1RP'   Mono: Playback [off]
+amixer -q -c AUDIO sset 'Output Right From Right DAC'   Mono: Playback [off]
+amixer -q -c AUDIO sset 'Volume Soft Stepping' 'disabled'
 
 alsactl store
 
