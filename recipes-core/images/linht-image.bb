@@ -72,6 +72,11 @@ IMAGE_INSTALL:append = " \
     util-linux \
 "
 
+# The CompuLab default local.conf adds a second network stack and NTP daemon.
+# LinHT uses systemd-networkd and systemd-timesyncd, and ModemManager would
+# probe the GNSS UART.
+CORE_IMAGE_EXTRA_INSTALL:remove = "networkmanager modemmanager dhcpcd ifupdown ntp"
+
 # Gnuradio stuff
 IMAGE_INSTALL += "\
     gnuradio \
