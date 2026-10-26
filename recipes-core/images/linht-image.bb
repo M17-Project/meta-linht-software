@@ -70,6 +70,8 @@ IMAGE_INSTALL:append = " \
     e2fsprogs-resize2fs \
     parted \
     util-linux \
+    libubootenv-bin \
+    u-boot-compulab-env \
 "
 
 # The CompuLab default local.conf adds a second network stack and NTP daemon.

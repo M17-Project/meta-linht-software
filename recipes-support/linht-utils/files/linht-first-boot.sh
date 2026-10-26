@@ -42,6 +42,17 @@ amixer -q -c AUDIO sset 'Volume Soft Stepping' 'disabled'
 
 alsactl store
 
+# A U-Boot environment saved on eMMC survives reflashing and overrides the
+# compiled-in defaults, so set the boot settings explicitly
+echo "Setting U-Boot environment..."
+set_uboot_env() {
+    if [ "$(fw_printenv -n "$1" 2>/dev/null)" != "$2" ]; then
+        fw_setenv "$1" "$2" || echo "WARN: could not set U-Boot $1"
+    fi
+}
+set_uboot_env bootdelay 0
+set_uboot_env bootlist "emmc_ul sd_ul"
+
 echo "Enable services..."
 systemctl enable linht-zmq-proxy.service
 systemctl enable linht-volume-ctrl.service
