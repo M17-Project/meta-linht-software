@@ -8,17 +8,25 @@ SRCREV = "${AUTOREV}"
 PV = "1.0+git${SRCPV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/M17-Project/M17_T9.git;protocol=https;branch=dev"
+SRC_URI = "git://github.com/M17-Project/M17_T9.git;protocol=https;branch=main"
 
 S = "${WORKDIR}/git"
 
 do_compile() {
-    ${CC} ${CFLAGS} ${LDFLAGS} -I. -o m17-t9 *.c
+    # Upstream is a library now (no main()); dictionaries are header-only
+    ${CC} ${CFLAGS} ${LDFLAGS} -fPIC -shared -o libt9.so t9.c
 }
 
 do_install() {
-    install -d ${D}${bindir}
-    install -m 0755 m17-t9 ${D}${bindir}/
+    install -d ${D}${libdir}
+    install -d ${D}${includedir}/t9
+
+    install -m 755 libt9.so ${D}${libdir}/
+    install -m 644 t9.h ${D}${includedir}/
+    install -m 644 dict/dict_en.h dict/dict_en_sorted.h dict/dict_en_offsets.h ${D}${includedir}/t9/
 }
 
-FILES:${PN} = "${bindir}/m17-t9"
+FILES:${PN} = "${libdir}/libt9.so"
+FILES:${PN}-dev = "${includedir}/*"
+
+INSANE_SKIP:${PN} = "dev-so"

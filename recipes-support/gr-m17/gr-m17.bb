@@ -9,7 +9,7 @@ inherit gnuradio-oot
 
 PV = "0.0.4+git${SRCPV}"
 
-SRC_URI = "gitsm://github.com/M17-Project/gr-m17;branch=dev;protocol=https \
+SRC_URI = "gitsm://github.com/M17-Project/gr-m17;branch=main;protocol=https \
           "
 S = "${WORKDIR}/git"
 
