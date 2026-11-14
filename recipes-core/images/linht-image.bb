@@ -74,9 +74,10 @@ IMAGE_INSTALL:append = " \
     u-boot-compulab-env \
 "
 
-# The CompuLab default local.conf adds a second network stack and NTP daemon.
-# LinHT uses systemd-networkd and systemd-timesyncd, and ModemManager would
-# probe the GNSS UART.
+# The CompuLab default local.conf adds a second network stack and an NTP
+# daemon. LinHT uses systemd-networkd, runs no NTP client at all (systemd-conf
+# ships 10-linht-no-timesyncd.preset and masks systemd-timesyncd), and
+# ModemManager would probe the GNSS UART.
 CORE_IMAGE_EXTRA_INSTALL:remove = "networkmanager modemmanager dhcpcd ifupdown ntp"
 
 # Gnuradio stuff

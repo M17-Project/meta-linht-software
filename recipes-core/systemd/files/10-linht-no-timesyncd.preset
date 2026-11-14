@@ -1,0 +1,10 @@
+# LinHT has no permanent network uplink. The only IP link is the usb0 gadget,
+# and there LinHT is the DHCP server, not a client - systemd-timesyncd would
+# never reach a time server and would just keep retrying. The clock is left to
+# the RTC and to userspace (GPS), so keep the NTP client switched off.
+#
+# systemd itself ships 90-systemd.preset containing
+#     enable systemd-timesyncd.service
+# Preset files are read in lexicographic order and the first matching line
+# wins, so this file has to sort before 90-systemd.preset.
+disable systemd-timesyncd.service
