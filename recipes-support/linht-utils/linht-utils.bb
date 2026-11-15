@@ -18,6 +18,24 @@ SYSTEMD_AUTO_ENABLE = "enable"
 
 EXTRA_OEMAKE = ""
 
+# Upstream hardcodes /dev/input/event0 for the keypad, which stopped being
+# correct when the i.MX93 BBNSM power key was enabled: that driver is built
+# into the kernel and registers its input device during kernel init, so it
+# takes event0, while matrix-keypad is a module loaded later and gets event1.
+# Repoint the programs at the stable symlink that linht-input-rules
+# (meta-linht-hardware) creates. Done with sed rather than a patch because
+# SRCREV is AUTOREV.
+do_configure:prepend() {
+    hits=$(grep -rl '"/dev/input/event0"' ${S} --include='*.c' --include='*.h' || true)
+    if [ -z "$hits" ]; then
+        bbwarn "linht-utils: no \"/dev/input/event0\" found in the source tree. If upstream changed how the keypad is opened, make sure it still resolves to /dev/input/keypad and drop this do_configure:prepend."
+    fi
+    for f in $hits; do
+        sed -i 's|"/dev/input/event0"|"/dev/input/keypad"|g' "$f"
+        bbnote "linht-utils: keypad path in $f repointed to /dev/input/keypad"
+    done
+}
+
 do_compile() {
     # sx1255-spi
     cd ${S}/sx1255
